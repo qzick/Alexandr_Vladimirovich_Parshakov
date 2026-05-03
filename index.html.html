@@ -1,0 +1,443 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+   <meta charset="UTF-8">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <title>Александр Владимирович Паршаков | Юридическая помощь</title>
+   <style>
+      * {
+         margin: 0;
+         padding: 0;
+         box-sizing: border-box;
+      }
+
+      body {
+         /* Приятный градиентный фон */
+         background: linear-gradient(145deg, #f0f7ff 0%, #e9eef5 100%);
+         font-family: 'Segoe UI', 'Roboto', 'Merriweather', Georgia, serif;
+         padding: 40px 20px;
+         color: #1a2c3e;
+         min-height: 100vh;
+      }
+
+      .page {
+         max-width: 1300px;
+         margin: 0 auto;
+         background: rgba(255, 255, 255, 0.92);
+         backdrop-filter: blur(1px);
+         border-radius: 48px;
+         box-shadow: 0 25px 45px -12px rgba(0, 0, 0, 0.25), 0 2px 6px rgba(0, 0, 0, 0.05);
+         padding: 40px 35px;
+         transition: all 0.2s;
+      }
+
+      /* Заголовки */
+      h1 {
+         font-size: 2.4rem;
+         text-align: center;
+         margin-bottom: 8px;
+         background: linear-gradient(135deg, #1e4668, #2b5c8a);
+         background-clip: text;
+         -webkit-background-clip: text;
+         color: transparent;
+         letter-spacing: -0.3px;
+      }
+
+      .subhead {
+         text-align: center;
+         font-size: 1.3rem;
+         font-weight: 500;
+         color: #2c6e9e;
+         border-bottom: 2px solid #cbdde9;
+         display: inline-block;
+         width: auto;
+         margin: 0 auto 35px auto;
+         padding-bottom: 8px;
+      }
+
+      /* ДВЕ КОЛОНКИ: слева услуги + текст, справа картинка */
+      .two-columns {
+         display: flex;
+         gap: 48px;
+         flex-wrap: wrap;
+         margin: 35px 0 30px;
+      }
+
+      /* Левая часть: блок с услугами и ценами */
+      .services-block {
+         flex: 2;
+         min-width: 260px;
+      }
+
+      /* Правая часть: картинка + подпись */
+      .image-block {
+         flex: 1;
+         min-width: 220px;
+         display: flex;
+         flex-direction: column;
+         align-items: center;
+         justify-content: flex-start;
+      }
+
+      .lawyer-img {
+         width: 100%;
+         max-width: 320px;
+         border-radius: 32px;
+         box-shadow: 0 20px 35px -12px rgba(0, 0, 0, 0.3);
+         border: 4px solid white;
+         transition: transform 0.25s ease, box-shadow 0.3s;
+         object-fit: cover;
+         background: #f4f9fe;
+      }
+
+      .lawyer-img:hover {
+         transform: scale(1.02);
+         box-shadow: 0 25px 40px -12px rgba(0, 0, 0, 0.4);
+      }
+
+      .caption {
+         margin-top: 16px;
+         font-style: italic;
+         color: #4e6b7e;
+         background: rgba(255, 255, 255, 0.7);
+         padding: 6px 14px;
+         border-radius: 60px;
+         font-size: 0.9rem;
+         backdrop-filter: blur(2px);
+      }
+
+      /* приветственный текст */
+      .intro-text {
+         background: #eef3fc;
+         padding: 24px 28px;
+         border-radius: 36px;
+         margin-bottom: 32px;
+         font-size: 1rem;
+         line-height: 1.5;
+         color: #1f3b4c;
+         border-left: 6px solid #2b7a62;
+         box-shadow: 0 5px 12px rgba(0, 0, 0, 0.03);
+      }
+
+      .intro-text h2 {
+         font-size: 1.6rem;
+         margin-bottom: 16px;
+         color: #1f5e6e;
+         display: flex;
+         align-items: center;
+         gap: 10px;
+      }
+
+      .intro-text p {
+         margin-bottom: 12px;
+      }
+
+      .speciality {
+         font-weight: 600;
+         color: #1c6d5e;
+         margin-top: 12px;
+      }
+
+      /* Стили для списка услуг — аккуратные карточки */
+      .services-title {
+         font-size: 1.8rem;
+         font-weight: 700;
+         margin: 20px 0 20px 0;
+         color: #2c4c6c;
+         border-left: 5px solid #328f6e;
+         padding-left: 18px;
+      }
+
+      .price-grid {
+         display: flex;
+         flex-direction: column;
+         gap: 12px;
+         margin-bottom: 35px;
+      }
+
+      .service-item {
+         background: white;
+         padding: 12px 20px;
+         border-radius: 60px;
+         display: flex;
+         justify-content: space-between;
+         align-items: center;
+         flex-wrap: wrap;
+         box-shadow: 0 2px 6px rgba(0, 0, 0, 0.04);
+         transition: all 0.2s;
+         border: 1px solid #dee7ef;
+      }
+
+      .service-item:hover {
+         background: #ffffff;
+         border-color: #bdd4e4;
+         box-shadow: 0 8px 18px -8px rgba(0, 0, 0, 0.1);
+         transform: translateX(4px);
+      }
+
+      .service-name {
+         font-size: 1rem;
+         font-weight: 600;
+         color: #1e3a4d;
+         letter-spacing: -0.2px;
+      }
+
+      .service-price {
+         font-size: 1.05rem;
+         font-weight: 700;
+         color: #216e54;
+         background: #e9f4ef;
+         padding: 4px 14px;
+         border-radius: 40px;
+      }
+
+      /* контактная информация */
+      .contact-block {
+         margin-top: 35px;
+         background: #e2edf7;
+         border-radius: 48px;
+         padding: 28px 30px;
+         text-align: center;
+         box-shadow: inset 0 0 0 1px rgba(255,255,255,0.6), 0 10px 20px -5px rgba(0,0,0,0.05);
+      }
+
+      .contact-block h3 {
+         font-size: 1.6rem;
+         margin-bottom: 12px;
+         color: #235b6e;
+      }
+
+      /* Стили для кликабельных ссылок */
+      .clickable-phone {
+         font-size: 1.5rem;
+         font-weight: 700;
+         letter-spacing: 1px;
+         color: #004d66;
+         background: white;
+         display: inline-block;
+         padding: 10px 28px;
+         border-radius: 60px;
+         margin: 12px 0;
+         font-family: monospace;
+         box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+         cursor: pointer;
+         transition: all 0.2s ease;
+         border: 2px solid transparent;
+      }
+
+      .clickable-phone:hover {
+         background: #e6f4ff;
+         border-color: #2b7a62;
+         transform: scale(1.02);
+         box-shadow: 0 6px 12px rgba(0,0,0,0.1);
+      }
+
+      .clickable-phone:active {
+         transform: scale(0.98);
+      }
+
+      .clickable-email {
+         font-size: 1.15rem;
+         background: #ffffffcc;
+         display: inline-block;
+         padding: 8px 24px;
+         border-radius: 40px;
+         margin-top: 8px;
+         font-weight: 500;
+         color: #1e5f70;
+         text-decoration: none;
+         cursor: pointer;
+         transition: all 0.2s ease;
+         border: 1px solid #c0d4e5;
+      }
+
+      .clickable-email:hover {
+         background: white;
+         border-color: #2b7a62;
+         transform: scale(1.02);
+         box-shadow: 0 4px 10px rgba(0,0,0,0.08);
+      }
+
+      /* Уведомление (тост) */
+      .toast-notification {
+         position: fixed;
+         bottom: 30px;
+         left: 50%;
+         transform: translateX(-50%) translateY(100px);
+         background: #1e4668;
+         color: white;
+         padding: 12px 28px;
+         border-radius: 60px;
+         font-size: 1rem;
+         font-weight: 500;
+         box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+         z-index: 1000;
+         opacity: 0;
+         transition: all 0.3s ease;
+         pointer-events: none;
+         white-space: nowrap;
+         backdrop-filter: blur(8px);
+         background: rgba(30, 70, 104, 0.95);
+         font-family: 'Segoe UI', sans-serif;
+      }
+
+      .toast-notification.show {
+         transform: translateX(-50%) translateY(0);
+         opacity: 1;
+      }
+
+      .small-note {
+         margin-top: 20px;
+         font-size: 0.85rem;
+         color: #4d6a7e;
+      }
+
+      hr {
+         margin: 25px 0 10px;
+         border: none;
+         height: 2px;
+         background: linear-gradient(to right, #c0d4e5, transparent);
+      }
+
+      @media (max-width: 880px) {
+         .two-columns {
+            flex-direction: column;
+         }
+         .image-block {
+            order: 1;
+            margin-top: 10px;
+         }
+         .services-block {
+            order: 2;
+         }
+         .page {
+            padding: 25px 20px;
+         }
+         .service-item {
+            border-radius: 28px;
+         }
+         .toast-notification {
+            white-space: nowrap;
+            font-size: 0.9rem;
+            padding: 10px 20px;
+         }
+      }
+   </style>
+</head>
+<body>
+<div class="page">
+   <h1>Александр Владимирович Паршаков</h1>
+   <div style="text-align: center;">
+      <div class="subhead">Ваш надёжный юридический партнёр</div>
+   </div>
+
+   <!-- ДВЕ КОЛОНКИ: слева контент / справа ФОТО -->
+   <div class="two-columns">
+      <!-- Левая основная часть (текст+услуги) -->
+      <div class="services-block">
+         <div class="intro-text">
+            <h2>📋 Здравствуйте!</h2>
+            <p>Я <strong>Александр Владимирович Паршаков</strong> — юрист с многолетней практикой в гражданско-правовых вопросах. 
+            Моя задача — обеспечить квалифицированную защиту ваших прав и интересов. Работаю как с частными лицами, так и с бизнесом.</p>
+            <p><strong>🎯 Основные направления деятельности:</strong> Корпоративное право и сопровождение бизнеса, споры по недвижимости, 
+            семейное и наследственное право, общее гражданское право (взыскание долгов, возмещение ущерба, защита прав потребителей). 
+            Также я готовлю исковые заявления, жалобы, ходатайства и представляю интересы в судах всех инстанций.</p>
+            <div class="speciality">⚖️ Ваша уверенность — моя профессиональная ответственность.</div>
+         </div>
+
+         <!-- Виды услуг -->
+         <div class="services-title">📌 Виды предоставляемых услуг</div>
+         <div class="price-grid">
+            <div class="service-item"><span class="service-name">✍️ Консультация (письменная)</span><span class="service-price">от 1 500 ₽</span></div>
+            <div class="service-item"><span class="service-name">🤝 Досудебное урегулирование</span><span class="service-price">от 5 000 ₽</span></div>
+            <div class="service-item"><span class="service-name">🏛️ Представительство в суде</span><span class="service-price">от 8 000 ₽</span></div>
+            <div class="service-item"><span class="service-name">📜 Составление претензии / искового заявления</span><span class="service-price">от 5 000 ₽</span></div>
+            <div class="service-item"><span class="service-name">🔍 Проверка и анализ договора</span><span class="service-price">от 5 000 ₽</span></div>
+            <div class="service-item"><span class="service-name">📢 Составление жалобы в госорганы</span><span class="service-price">от 5 000 ₽</span></div>
+            <div class="service-item"><span class="service-name">📑 Анализ и экспертиза документов</span><span class="service-price">от 5 000 ₽</span></div>
+            <div class="service-item"><span class="service-name">⚖️ Составление апелляционной / кассационной жалобы</span><span class="service-price">от 5 000 ₽</span></div>
+            <div class="service-item"><span class="service-name">📌 Составление ходатайства</span><span class="service-price">от 5 000 ₽</span></div>
+            <div class="service-item"><span class="service-name">🖋️ Составление доверенности</span><span class="service-price">от 5 000 ₽</span></div>
+            <div class="service-item"><span class="service-name">🏛️ Составление заявления в суд</span><span class="service-price">от 5 000 ₽</span></div>
+            <div class="service-item"><span class="service-name">🤝 Составление мирового соглашения</span><span class="service-price">от 5 000 ₽</span></div>
+         </div>
+      </div>
+
+      <!-- Правая часть: картинка (Ваше фото) -->
+      <div class="image-block">
+         <img class="lawyer-img" src="IMG_1641.jpg" alt="Александр Владимирович Паршаков, юрист" onerror="this.onerror=null; this.src='https://placehold.co/400x500/eef2f5/2c5f7d?text=Александр+В.+Паршаков'; this.style.objectFit='cover';">
+         <div class="caption">Александр Владимирович Паршаков — защита ваших прав</div>
+      </div>
+   </div>
+
+   <!-- Контактный блок с кликабельными элементами -->
+   <div class="contact-block">
+      <h3>📞 Свяжитесь со мной удобным способом</h3>
+      <!-- Телефон: клик → копирование + уведомление -->
+      <div class="clickable-phone" id="phoneNumber">+7-903-995-99-28</div>
+      <!-- Почта: клик → открытие почтового клиента (реальный адрес) -->
+      <a href="mailto:aleksandr_19_84@mail.ru" class="clickable-email" id="emailLink">📧 aleksandr_19_84@mail.ru</a>
+      <div class="small-note">📱 Нажмите на номер телефона, чтобы скопировать его | Нажмите на почту, чтобы написать</div>
+   </div>
+   <hr />
+   <div style="text-align: center; font-size: 0.75rem; color: #5e7e97; margin-top: 12px;">© Александр Владимирович Паршаков | Юридические услуги с гарантией результата</div>
+</div>
+
+<!-- Уведомление (тост) -->
+<div id="copyToast" class="toast-notification">✅ Номер скопирован</div>
+
+<script>
+   (function() {
+      // Элементы
+      const phoneElement = document.getElementById('phoneNumber');
+      const toast = document.getElementById('copyToast');
+      
+      // Функция показа уведомления
+      function showNotification(message) {
+         if (!toast) return;
+         toast.textContent = message || '✅ Номер скопирован';
+         toast.classList.add('show');
+         
+         setTimeout(() => {
+            toast.classList.remove('show');
+            setTimeout(() => {
+               if (toast.textContent !== '✅ Номер скопирован') {
+                  toast.textContent = '✅ Номер скопирован';
+               }
+            }, 300);
+         }, 2000);
+      }
+      
+      // Функция копирования текста в буфер обмена
+      async function copyToClipboard(text) {
+         try {
+            await navigator.clipboard.writeText(text);
+            return true;
+         } catch (err) {
+            const textarea = document.createElement('textarea');
+            textarea.value = text;
+            document.body.appendChild(textarea);
+            textarea.select();
+            const success = document.execCommand('copy');
+            document.body.removeChild(textarea);
+            return success;
+         }
+      }
+      
+      // Обработчик клика по номеру телефона
+      if (phoneElement) {
+         phoneElement.addEventListener('click', async (event) => {
+            event.preventDefault();
+            let phoneNumber = phoneElement.innerText.trim();
+            const success = await copyToClipboard(phoneNumber);
+            if (success) {
+               showNotification('✅ Номер скопирован');
+            } else {
+               showNotification('❌ Не удалось скопировать');
+            }
+         });
+      }
+   })();
+</script>
+</body>
+</html>
